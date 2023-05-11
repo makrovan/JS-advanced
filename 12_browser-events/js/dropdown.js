@@ -5,14 +5,15 @@
 
     openButton.addEventListener('click', (event) => {
       dropdownMenu.style.display = 'block';
-      event.stopPropagation();
+      event.isClickedWithinDropdown = true;
     });
 
     dropdownMenu.addEventListener('click', (event) => {
-      event.stopPropagation();
+      event.isClickedWithinDropdown = true;
     });
 
-    window.addEventListener('click', () => {
+    window.addEventListener('click', (event) => {
+      if (event.isClickedWithinDropdown) return;
       dropdownMenu.style.display = 'none';
     });
   });
