@@ -4,12 +4,11 @@ import createTodoApp from './view.js';
 // const serverSelected = document.querySelector('#serverChecked');
 
 const options = document.getElementsByName('options');
+const container = document.getElementById('todo-app');
+createTodoApp(container, 'Список дел', container.dataset.source, 'local');
+
 options.forEach((option) => {
   option.addEventListener('change', (event) => {
-    createTodoApp(document.getElementById('todo-app'), 'Список дел', 'deal', event.currentTarget.value);
+    createTodoApp(container, 'Список дел', container.dataset.source, event.currentTarget.value);
   });
 });
-// const sourceButton = document.getElementById('sourceButton');
-// sourceButton.addEventListener('click', () => {
-
-// });

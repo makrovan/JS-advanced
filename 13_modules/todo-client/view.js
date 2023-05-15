@@ -1,6 +1,6 @@
-import {
-  setDataSource, getTodoArray, addNewItem, toggleItem, removeItem,
-} from './api.js';
+let importModule;
+
+let remoteDataSource;
 
 //  заголовок приложения
 function createApiTitle(title) {
@@ -41,7 +41,13 @@ function createTodoItemForm() {
 
 // вывод строки с одним делом
 async function createTodoItem(name, done, storageTitle, id = 0) {
-  const newId = (id === 0) ? await addNewItem(name, done, storageTitle) : id;
+  let newId;
+  if (id === 0) {
+    newId = await importModule.addNewItem(name, done, storageTitle);
+  } else {
+    newId = id;
+  }
+
   const item = document.createElement('li');
   //  элемент с кнопками
   const buttonGroup = document.createElement('div');
@@ -62,13 +68,21 @@ async function createTodoItem(name, done, storageTitle, id = 0) {
   deleteButton.textContent = 'Удалить';
 
   doneButton.addEventListener('click', async () => {
-    await toggleItem(item.id, storageTitle);
+    await importModule.toggleItem(item.id, storageTitle);
+    // if (remoteDataSource) {
+    // } else {
+    //   toggleLocalItem(item.id, storageTitle);
+    // }
     item.classList.toggle('list-group-item-success');
   });
 
   deleteButton.addEventListener('click', () => {
     if (window.confirm('Вы уверены?')) {
-      removeItem(item.id, storageTitle);
+      importModule.removeItem(item.id, storageTitle);
+      // if (remoteDataSource) {
+      // } else {
+      //   removeLocalItem(item.id, storageTitle);
+      // }
       item.remove();
     }
   });
@@ -88,7 +102,11 @@ async function createTodoItem(name, done, storageTitle, id = 0) {
 //  список элементов
 async function createTodoList(storageTitle) {
   const list = document.createElement('ul');
-  const todoArray = await getTodoArray(storageTitle);
+  const todoArray = await importModule.getTodoArray(storageTitle);
+  // if (remoteDataSource) {
+  // } else {
+  //   todoArray = getLocalTodoArray(storageTitle);
+  // }
   list.classList.add('list-group');
   todoArray.forEach(async (todoInstance) => {
     const istanceName = todoInstance.name;
@@ -97,16 +115,20 @@ async function createTodoList(storageTitle) {
     const todoItem = await createTodoItem(istanceName, instanceDone, storageTitle, instanceId);
     list.append(todoItem.item);
   });
-  // for (const  of todoArray) {}
   return list;
 }
 
 //-------------------------------------------------------------------
 async function createTodoApp(container, title, storageTitle, source) {
   container.innerHTML = '';
-  // todoArrayStorage = storageTitle;
 
-  setDataSource(source);
+  remoteDataSource = (source === 'remote');
+
+  if (remoteDataSource) {
+    importModule = await import('./api_remote.js');
+  } else {
+    importModule = await import('./api_local.js');
+  }
 
   const todoAppTitle = createApiTitle(title);
   const todoItemForm = createTodoItemForm();
