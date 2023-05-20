@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script> -->
+  <script defer src="./js/dropdown.js"></script>
+  <script defer src="./js/input.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container py-5">
+    <p><a href="./test_scrolling.html">Страница задания 3</a></p>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle js-open-dropdown" type="button" data-toggle="dropdown"
+        data-target="#dropdownMenu" aria-expanded="false">Dropdown button
+      </button>
+      <div id="dropdownMenu" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </div>
+    <form>
+      <div class="input-group py-5">
+        <input type="text" class="form-control" placeholder="Фамилия">
+        <input type="text" class="form-control" placeholder="Имя">
+        <input type="text" class="form-control" placeholder="Отчество">
+      </div>
+      <button id="formBtn" type="submit" class="btn btn-secondary mb-3">Success</button>
+    </form>
+    <!-- <p class="text-start py-5">Иванов Иван Иванович</p> -->
+  </div>
+</body>
+
+</html>
