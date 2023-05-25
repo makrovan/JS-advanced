@@ -1,7 +1,7 @@
-// выбранная карта
-let currentCard = null;
-
 export default class Card {
+  // выбранная карта
+  static currentCard = null;
+
   // конструктор класса c параметрами. Устанавливает начальные свойства и параметры карты.
   // Также запускает создание карты (метод createElement).
   constructor(container, cardNumber, flip, numberInLine = 4) {
@@ -31,19 +31,19 @@ export default class Card {
         return;
       }
       this.open = true;
-      if (currentCard === null) {
-        currentCard = this;
-      } else if (currentCard.cardNumber === this.cardNumber) {
-        currentCard.success = true;
+      if (Card.currentCard === null) {
+        Card.currentCard = this;
+      } else if (Card.currentCard.cardNumber === this.cardNumber) {
+        Card.currentCard.success = true;
         this.success = true;
-        currentCard = null;
+        Card.currentCard = null;
       } else {
         setTimeout(() => {
           this.open = false;
           // если открыли больше 2-х карт а минуту:
-          if (currentCard) {
-            currentCard.open = false;
-            currentCard = null;
+          if (Card.currentCard) {
+            Card.currentCard.open = false;
+            Card.currentCard = null;
           }
         }, 1000);
       }

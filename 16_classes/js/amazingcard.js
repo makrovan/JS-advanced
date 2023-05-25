@@ -12,8 +12,9 @@ export default class AmazingCard extends Card {
     imgElement.src = `https://http.cat/${imgCode}`;
     imgElement.alt = imgCode;
     this.cardElement.style.height = '100%';
-    const imgHeight = this.cardElement.offsetHeight;
-    imgElement.style.height = `${imgHeight}px`;
+    this.cardElement.style.width = '100%';
+    imgElement.style.height = '100%';
+    imgElement.style.width = '100%';
     this.cardElement.append(imgElement);
   }
 
