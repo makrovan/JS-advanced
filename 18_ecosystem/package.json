@@ -1,13 +1,25 @@
 {
+  "name": "catalog",
+  "description": "Products catalog",
   "private": true,
   "scripts": {
     "lint": "eslint ./",
-    "lint:report": "eslint ./"
+    "lint:report": "eslint ./",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
+  "author": "Anton",
   "devDependencies": {
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-formatter-gitlab": "^2.1.0",
     "eslint-plugin-import": "^2.22.1"
+  },
+  "dependencies": {
+    "card-info": "^1.2.4",
+    "imask": "^6.6.3",
+    "parcel": "^2.9.2",
+    "redom": "^3.29.1",
+    "validator": "^13.9.0"
   }
 }
