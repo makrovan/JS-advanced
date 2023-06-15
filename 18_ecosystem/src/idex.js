@@ -16,7 +16,7 @@ import {
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import logo from './assets/images/logo.svg'
+import logo from './assets/images/logo.svg';
 
 // import moment from 'moment';
 
