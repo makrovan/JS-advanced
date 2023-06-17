@@ -1,13 +1,23 @@
+import 'babel-polyfill';
+
 import {
   el, mount, setAttr, setStyle, unmount,
 } from 'redom';
+
 import CardInfo from 'card-info';
+
 import validator from 'validator';
+
 import {
   setMaskToCardPeriodInput,
   setMaskTocardNumberInput,
   setMaskToCardCvvInput,
-} from './customMasks.js'
+} from './customMasks.js';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import logo from './assets/images/logo.svg';
+
 // import moment from 'moment';
 
 // функция, добавляющая input-ы в форму
@@ -36,22 +46,44 @@ function makeInputRow(destForm,
 // функция стилизации формы ввода под цвета банка + загрузка Logo
 function setFormBankStyle(cardNumber, form, cardNumberInput) {
   const cardInfo = new CardInfo(cardNumber, {
-    banksLogosPath: './node_modules/card-info/dist/banks-logos/',
-    brandsLogosPath: './node_modules/card-info/dist/brands-logos/',
+    // banksLogosPath: './node_modules/card-info/dist/banks-logos/',
+    // brandsLogosPath: './node_modules/card-info/dist/brands-logos/',
+    // banksLogosPath: './assets/images/banks-logos/',
+    brandsLogosPath: './assets/images/brands-logos/',
   });
   // console.log(cardInfo);
   setStyle(form, { backgroundColor: cardInfo.backgroundColor });
   const labelRow = el('.row justify-content-between p-5');
   mount(form, labelRow, cardNumberInput.parentElement);
-  const bankLogo = el('img', {
-    src: cardInfo.bankLogoPng,
-    alt: 'bank logo',
-  });
-  mount(labelRow, bankLogo);
-  const brandLogo = el('img', {
-    src: cardInfo.brandLogoPng,
-    alt: 'bank logo',
-  });
+  // const logo = new URL(cardInfo.bankLogoPng, import.meta.url);
+
+  // const bankLogoSrc = require(`${cardInfo.bankLogoPng}`);
+  // const bankLogo = el('img', { src: bankLogoSrc });
+  // {
+  //   src: cardInfo.bankLogoPng,
+  //   alt: 'bank logo',
+  // });
+  // setStyle(bankLogo, {
+  //   width: 'fit-content',
+  //   height: 'fit-content',
+  // });
+  // mount(labelRow, bankLogo);
+  // const brandLogoSrc = require(`${cardInfo.brandLogoPng}`);
+  // const brandLogo = el('img', { src: brandLogoSrc });
+
+  // const brandLogo = el('img', {
+  //   src: cardInfo.brandLogoPng,
+  //   alt: 'brand logo',
+  // });
+
+  // const brandLogoSrc = new URL(cardInfo.brandLogoPng, import.meta.url);
+  // const brandLogo = el('img', { src: brandLogoSrc });
+
+  // setStyle(brandLogo, {
+  //   width: 'fit-content',
+  //   height: 'fit-content',
+  // });
+  const brandLogo = el('img', { src: logo });
   mount(labelRow, brandLogo);
   return labelRow;
 }
@@ -74,11 +106,12 @@ function checkButtonValid(button) {
 function main() {
   const container = el('.container');
   mount(document.body, container);
+
   const form = el('form.p-5');
   mount(container, form);
   const headerRow = el('.row justify-content-md-center');
   mount(form, headerRow);
-  const h2 = el('h2', 'Форма ввода реквизитов банковской карты');
+  const h2 = el('h2', 'Форма оплаты ');
   mount(headerRow, h2);
 
   const cardNumberInput = makeInputRow(form, 'Номер банковской карты:', 'cardNamber', 'XXXX XXXX XXXX XXXX');
