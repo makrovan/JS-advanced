@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "lint": "eslint ./",
+    "lint:fix": "eslint ./ --fix",
+    "lint:report": "eslint ./"
+  },
+  "devDependencies": {
+    "cypress": "^12.14.0",
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-formatter-gitlab": "^2.1.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.8"
+  }
+}
