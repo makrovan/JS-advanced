@@ -24,4 +24,4 @@ jobs:
         with:
           context: ./16_classes
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pairsCard:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/pairs-card:latest
