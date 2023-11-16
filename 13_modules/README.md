@@ -1,4 +1,4 @@
-Для запуска приложения используйте [docker-compose](https://raw.githubusercontent.com/makrovan/JS-advanced/main/13_modules/docker-compose.yml "download").
+Для запуска приложения используйте [docker-compose](./13_modules/docker-compose.yml "download").
 
 <a href="https://makrovan.github.io/JS-advanced/13_modules/docker-compose.yml" download>download</a>
 
