@@ -1,4 +1,4 @@
-name: Deploy ToDoApp (16_classes) In DockerHub
+name: Deploy PairsCardApp (16_classes) In DockerHub
 on:
   push:
     branches: [ main ]
