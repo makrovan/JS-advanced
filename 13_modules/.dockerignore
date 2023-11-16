@@ -1,0 +1,10 @@
+.vscode
+todo-server
+.editorconfig
+.eslintrc.js
+.gitignore
+.gitlab-ci.yml
+db.json
+Dockerfile
+package.json
+package-lock.json

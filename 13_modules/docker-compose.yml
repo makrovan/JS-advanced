@@ -1,0 +1,19 @@
+version: '0.1'
+services:
+  backend:
+    image: makrov/todo-server
+    container_name: todo_backend
+    ports:
+      - 3000:3000
+    restart: always
+  frontend:
+    image: makrov/todo-frontend
+    container_name: todo_frontend
+    ports:
+      - 3001:3001
+    restart: always
+    links:
+      - backend
+    depends_on:
+      - backend
+
