@@ -28,6 +28,6 @@
 - Object — прототип базового класса для всех объектов в JavaScript.
 
 # Запуск:
-Для запуска используйте `docker run -d -p 3000:3000 makrov/oblect-prototype` -> http://localhost:3000
+Для запуска используйте `docker run -d -p 3000:3000 makrov/object-prototype` -> http://localhost:3000
 
 В образе для тестирования также имеется файл card.js, цепочку наследования внутри которого можно вывести в приложении
